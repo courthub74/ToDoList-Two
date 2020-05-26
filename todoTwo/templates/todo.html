@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}To-Do-List Two{% endblock %}
+
+
+{% block content %}
+
+    {% if all_items %}
+    <div class="container">
+
+    <table class="table table-bordered">
+      <th class="table table-dark" colspan="4">Language Stack</th>
+
+        {% for things in all_items %}
+            {% if things.completed %}
+                <tr class="table-secondary">
+                    <td class="striker">{{ things.item }}</td>
+                    <td><center>{{ things.completed }}</center></td>
+                    <td><center>Delete</center></td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td>{{ things.item }}</td>
+                    <td><center>{{ things.completed }}</center></td>
+                    <td><center>Delete</center></td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </table>
+
+
+
+    </div>
+    {% endif %}
+   
+{% endblock %}
