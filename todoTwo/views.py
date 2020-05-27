@@ -16,4 +16,5 @@ def proj(request):
 
 #EDIT
 def edit(request):
-	return render(request, 'edit.html', {})
+	all_proj = Project.objects.all
+	return render(request, 'edit.html', {'all_proj': all_proj})
