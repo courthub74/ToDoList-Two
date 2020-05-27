@@ -2,15 +2,29 @@
 
 {% block content %}
 
-	<div class="container">
-	  <table class="table table-bordered">
-      	<th class="table table-primary" colspan="4">Project Deliverables</th>
-      
-      
 
-      
-    </table>
 
-	{{ all_proj }}
-
+		{% if all_proj %}
+			<div class="container">
+      			<table class="table table-bordered">
+        			<th class="table table-primary" colspan="4">Projects to Complete</th>
+						{% for stuff in all_proj %}
+							{% if stuff.completedproj %}
+								<tr class="table-primary">
+									<td class="striker">{{ stuff.itemproj }}</td>
+									<td><center>{{ stuff.completedproj }}</center></td>
+									<td><center>Delete</center></td>
+								</tr>
+								{% else %}
+								<tr>
+									<td>{{ stuff.itemproj }}</td>
+									<td><center>{{ stuff.completedproj }}</center></td>
+									<td><center>Delete</center></td>
+								</tr>
+							{% endif %}
+							
+				      	{% endfor %}
+				</table>
+      	{% endif %}          
+			
 {% endblock %}
