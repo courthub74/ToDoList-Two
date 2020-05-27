@@ -7,9 +7,8 @@
 
     {% if all_items %}
     <div class="container">
-
     <table class="table table-bordered">
-      <th class="table table-dark" colspan="4">Language Stack</th>
+      <th class="table table-secondary" colspan="4">Language Stack</th>
 
         {% for things in all_items %}
             {% if things.completed %}
@@ -26,6 +25,16 @@
                 </tr>
             {% endif %}
         {% endfor %}
+    </table>
+
+
+
+    {% if all_proj %}
+    <table class="table table-bordered">
+      <th class="table table-primary" colspan="4">Project Deliverables</th>
+      
+
+      
     </table>
 
 
