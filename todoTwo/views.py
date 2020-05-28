@@ -26,20 +26,6 @@ def todo(request):
 	all_proj = Project.objects.all
 	return render(request, 'todo.html', {'all_proj': all_proj})'''
 
-#PROJECTS PAGE
-def projects(request):
-	if request.method == 'POST':
-		pform = ProjectForm(request.POST or None) #create variable called form call it ListForm and populate it with the request POST or if nothing requested, do nothing
-
-		if pform.is_valid(): #if information on form is valid
-			pform.save()     #save the info
-			all_proj = Project.objects.all
-			messages.success(request, ('Item Has Been Added To List'))
-			return render(request, 'projects.html', {'all_proj': all_proj})
-	else:
-		all_proj = Project.objects.all
-		return render(request, 'projects.html', {'all_proj': all_proj})
-
 #DELETE
 def delete(request, list_id):
 	item = List.objects.get(pk=list_id)
@@ -76,3 +62,22 @@ def editinfo(request, list_id):
 	else:
 		item = List.objects.get(pk=list_id)
 		return render(request, 'editinfo.html', {'item': item})
+
+
+
+################################################################
+
+
+#PROJECTS PAGE
+def projects(request):
+	if request.method == 'POST':
+		pform = ProjectForm(request.POST or None) #create variable called form call it ListForm and populate it with the request POST or if nothing requested, do nothing
+
+		if pform.is_valid(): #if information on form is valid
+			pform.save()     #save the info
+			all_proj = Project.objects.all
+			messages.success(request, ('Item Has Been Added To List'))
+			return render(request, 'projects.html', {'all_proj': all_proj})
+	else:
+		all_proj = Project.objects.all
+		return render(request, 'projects.html', {'all_proj': all_proj})
