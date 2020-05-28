@@ -4,5 +4,8 @@ from . import views
 urlpatterns = [
 	path('', views.todo, name='todo'),
 	path('edit/', views.edit, name='edit'),
-	path('delete/<list_id>', views.delete, name='delete')
+	path('delete/<list_id>', views.delete, name='delete'),
+	path('cross_off/<list_id>', views.cross_off, name='cross_off'),
+	path('uncross/<list_id>', views.uncross, name='uncross'),
+	path('editinfo/<list_id>', views.editinfo, name='editinfo')
 ]
