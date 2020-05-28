@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import List, Project
 from .forms import ListForm, ProjectForm
+from django.contrib import messages
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 
@@ -12,8 +14,9 @@ def todo(request):
 		if form.is_valid(): #if information on form is valid
 			form.save()     #save the info
 			all_items = List.objects.all
+			messages.success(request, ('Item Has Been Added To List'))
 			return render(request, 'todo.html', {'all_items': all_items})
-			
+
 	else:
 		all_items = List.objects.all
 		return render(request, 'todo.html', {'all_items': all_items})
@@ -27,3 +30,10 @@ def proj(request):
 def edit(request):
 	all_proj = Project.objects.all
 	return render(request, 'edit.html', {'all_proj': all_proj})
+
+#DELETE
+def delete(request, list_id):
+	item = List.objects.get(pk=list_id)
+	item.delete()
+	messages.success(request, ('Item Has Been Deleted!'))
+	return redirect ('todo')

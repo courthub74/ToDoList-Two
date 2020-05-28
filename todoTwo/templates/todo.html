@@ -4,8 +4,25 @@
 
 {% block content %}
 
+<div class="container">
+
+{% if messages %}
+  {% for message in messages %}
+
+      <div class="alert alert-secondary alert-dismissable" role="alert">
+        <button class="close" data-dismiss="alert">
+             <small><sup>x</sup></small>
+        </button>
+           {{ message }}
+      </div>
+
+  {% endfor %}
+{% endif %}
+
+<br>
+
     {% if all_items %}
-    <div class="container">
+    
       <table class="table table-bordered">
         <th class="table table-secondary" colspan="4">Language Stack</th>
 
@@ -14,13 +31,13 @@
                   <tr class="table-secondary">
                       <td class="striker">{{ things.item }}</td>
                       <td><center>{{ things.completed }}</center></td>
-                      <td><center>Delete</center></td>
+                      <td><center><a href="{% url 'delete' things.id %}">Delete</a></center></td>
                   </tr>
               {% else %}
                   <tr>
                       <td>{{ things.item }}</td>
                       <td><center>{{ things.completed }}</center></td>
-                      <td><center>Delete</center></td>
+                      <td><center><a href="{% url 'delete' things.id %}">Delete</a></center></td>
                   </tr>
               {% endif %}
           {% endfor %}
