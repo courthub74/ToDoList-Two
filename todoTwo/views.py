@@ -27,9 +27,9 @@ def todo(request):
 	return render(request, 'todo.html', {'all_proj': all_proj})'''
 
 #PROJECTS PAGE
-def edit(request):
+def projects(request):
 	all_proj = Project.objects.all
-	return render(request, 'edit.html', {'all_proj': all_proj})
+	return render(request, 'projects.html', {'all_proj': all_proj})
 
 #DELETE
 def delete(request, list_id):
@@ -55,13 +55,14 @@ def uncross(request, list_id):
 #EDIT
 def editinfo(request, list_id):
 	if request.method == 'POST':
-		form = ListForm(request.POST or None) #create variable called form call it ListForm and populate it with the request POST or if nothing requested, do nothing
+		item = List.objects.get(pk=list_id)
+
+		form = ListForm(request.POST or None, instance=item) #create variable called form call it ListForm and populate it with the request POST or if nothing requested, do nothing
 
 		if form.is_valid(): #if information on form is valid
 			form.save()     #save the info
-			all_items = List.objects.all
 			messages.success(request, ('Item Has Been Edited'))
-			return render(request, 'editinfo.html', {'all_items': all_items})
+			return redirect('todo')
 
 	else:
 		item = List.objects.get(pk=list_id)
