@@ -9,4 +9,6 @@ urlpatterns = [
 	path('editinfo/<list_id>', views.editinfo, name='editinfo'),
 	path('projects/', views.projects, name='projects'),
 	path('deleteproj/<list_id>', views.deleteproj, name='deleteproj'),
+	path('cross_off_project/<list_id>', views.cross_off_project, name='cross_off_project'),
+	path('uncross_project/<list_id>', views.uncross_project, name='uncross_project'),
 ]

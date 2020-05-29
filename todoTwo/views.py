@@ -40,7 +40,7 @@ def cross_off(request, list_id):
 	item.save()
 	return redirect ('todo')
 
-#CROSS OFF
+#UNCROSS
 def uncross(request, list_id):
 	item = List.objects.get(pk=list_id)
 	item.completed = False
@@ -87,4 +87,18 @@ def deleteproj(request, list_id):
 	pitem = Project.objects.get(pk=list_id)
 	pitem.delete()
 	messages.success(request, ('Item Has Been Deleted!'))
+	return redirect ('projects')
+
+#CROSS OFF PROJECTS
+def cross_off_project(request, list_id):
+	pitem = Project.objects.get(pk=list_id)
+	pitem.completedproj = True
+	pitem.save()
+	return redirect ('projects')
+
+#UNCROSS PROJECTS
+def uncross_project(request, list_id):
+	pitem = Project.objects.get(pk=list_id)
+	pitem.completedproj = False
+	pitem.save()
 	return redirect ('projects')
