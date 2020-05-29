@@ -81,3 +81,10 @@ def projects(request):
 	else:
 		all_proj = Project.objects.all
 		return render(request, 'projects.html', {'all_proj': all_proj})
+
+#DELETE PROJECTS
+def deleteproj(request, list_id):
+	pitem = Project.objects.get(pk=list_id)
+	pitem.delete()
+	messages.success(request, ('Item Has Been Deleted!'))
+	return redirect ('projects')

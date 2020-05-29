@@ -29,13 +29,13 @@
 								<tr class="table-primary">
 									<td class="striker">{{ stuff.itemproj }}</td>
 									<td><center>{{ stuff.completedproj }}</center></td>
-									<td><center>Delete</center></td>
+									<td><center><a href="{% url 'deleteproj' stuff.id %}">Delete</a></center></td>
 								</tr>
 								{% else %}
 								<tr>
 									<td>{{ stuff.itemproj }}</td>
 									<td><center>{{ stuff.completedproj }}</center></td>
-									<td><center>Delete</center></td>
+									<td><center><a href="{% url 'deleteproj' stuff.id %}">Delete</a></center></td>
 								</tr>
 							{% endif %}
 							
