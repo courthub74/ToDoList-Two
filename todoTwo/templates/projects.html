@@ -29,13 +29,13 @@
 						{% for stuff in all_proj %}
 							{% if stuff.completedproj %}
 								<tr class="table-primary">
-									<td class="striker">{{ stuff.itemproj }}</td>
+									<td class="striker"><a href="{% url 'projedit' stuff.id %}">{{ stuff.itemproj }}</a></td>
 									<td><center><a href="{% url 'uncross_project' stuff.id %}">Uncross</center></td>
 									<td><center><a href="{% url 'deleteproj' stuff.id %}">Delete</a></center></td>
 								</tr>
 								{% else %}
 								<tr>
-									<td>{{ stuff.itemproj }}</td>
+									<td><a href="{% url 'projedit' stuff.id %}">{{ stuff.itemproj }}</a></td>
 									<td><center><a href="{% url 'cross_off_project' stuff.id %}">Cross Off</a></center></td>
 									<td><center><a href="{% url 'deleteproj' stuff.id %}">Delete</a></center></td>
 								</tr>

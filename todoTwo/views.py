@@ -56,7 +56,7 @@ def editinfo(request, list_id):
 
 		if form.is_valid(): #if information on form is valid
 			form.save()     #save the info
-			messages.success(request, ('Item Has Been Edited'))
+			messages.success(request, ('Language Has Been Edited'))
 			return redirect('todo')
 
 	else:
@@ -76,7 +76,7 @@ def projects(request):
 		if pform.is_valid(): #if information on form is valid
 			pform.save()     #save the info
 			all_proj = Project.objects.all
-			messages.success(request, ('Item Has Been Added To List'))
+			messages.success(request, ('Project Has Been Added To List'))
 			return render(request, 'projects.html', {'all_proj': all_proj})
 	else:
 		all_proj = Project.objects.all
@@ -86,7 +86,7 @@ def projects(request):
 def deleteproj(request, list_id):
 	pitem = Project.objects.get(pk=list_id)
 	pitem.delete()
-	messages.success(request, ('Item Has Been Deleted!'))
+	messages.success(request, ('Project Has Been Deleted'))
 	return redirect ('projects')
 
 #CROSS OFF PROJECTS
@@ -102,3 +102,19 @@ def uncross_project(request, list_id):
 	pitem.completedproj = False
 	pitem.save()
 	return redirect ('projects')
+
+#EDIT PROJECTS
+def projedit(request, list_id):
+	if request.method == 'POST':
+		pitem = Project.objects.get(pk=list_id)
+
+		pform = ProjectForm(request.POST or None, instance=pitem)
+
+		if pform.is_valid():
+			pform.save()
+			messages.success(request, ('Project Has Been Edited'))
+			return redirect ('projects')
+	else:
+		pitem = Project.objects.get(pk=list_id)
+		return render(request, 'projedit.html', {'pitem': pitem}) 
+

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %} To-Do-List Two | Edit Project {% endblock %}
+
+
+{% block content %}
+
+	{{ pitem }}
+
+	{% if stuff %}
+       
+	<br><br>
+	
+	<div class="container">
+		<h3>EDIT HERE:</h3>
+		<form class="form-inline my-2 my-lg-0" method="POST">
+	    	{% csrf_token %}
+	      <input class="form-control mr-sm-2" type="search" placeholder="{{ pitem.pitem }}" value="{{ pitem.pitem }}" aria-label="Search" name="item">
+	      <input type="hidden" value="{{ pitem.pitem }}" name="completed">
+	      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Edit Item</button>
+	    </form>
+
+    </div>
+	
+	{% endif %}
+
+
+{% endblock %}
+	
