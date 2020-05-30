@@ -21,10 +21,6 @@ def todo(request):
 		all_items = List.objects.all
 		return render(request, 'todo.html', {'all_items': all_items})
 
-#PROJECTS
-'''def proj(request):
-	all_proj = Project.objects.all
-	return render(request, 'todo.html', {'all_proj': all_proj})'''
 
 #DELETE
 def delete(request, list_id):
