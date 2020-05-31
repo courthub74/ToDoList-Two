@@ -16,6 +16,16 @@ def todo(request):
 			all_items = List.objects.all
 			messages.success(request, ('Item Has Been Added To List'))
 			return render(request, 'todo.html', {'all_items': all_items})
+			
+	if request.method == 'POST':
+		pform = ProjectForm(request.POST or None) #create variable called form call it ListForm and populate it with the request POST or if nothing requested, do nothing
+
+		if pform.is_valid(): #if information on form is valid
+			pform.save()     #save the info
+			all_proj = Project.objects.all
+			messages.success(request, ('Project Has Been Added To List'))
+			return render(request, 'projects.html', {'all_proj': all_proj})
+
 
 	else:
 		all_items = List.objects.all
@@ -74,6 +84,14 @@ def projects(request):
 			all_proj = Project.objects.all
 			messages.success(request, ('Project Has Been Added To List'))
 			return render(request, 'projects.html', {'all_proj': all_proj})
+
+	if request.method == 'POST':
+		form = ListForm(request.POST or None)
+		if form.is_valid(): #if information on form is valid
+			form.save()     #save the info
+			all_items = List.objects.all
+			messages.success(request, ('Item Has Been Added To List'))
+			return render(request, 'todo.html', {'all_items': all_items})
 	else:
 		all_proj = Project.objects.all
 		return render(request, 'projects.html', {'all_proj': all_proj})
@@ -113,4 +131,7 @@ def projedit(request, list_id):
 	else:
 		pitem = Project.objects.get(pk=list_id)
 		return render(request, 'projedit.html', {'pitem': pitem}) 
+
+
+##################################################################
 
