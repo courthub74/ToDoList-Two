@@ -6,6 +6,10 @@ from django.http import HttpResponseRedirect
 
 # Create your views here.
 
+#BASICS
+def basics(request):
+	return render(request, 'basics.html', {})
+
 #TODOLIST
 def todo(request):
 	if request.method == 'POST':
