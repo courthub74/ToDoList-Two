@@ -30,24 +30,33 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+
       <li class="nav-item active">
-        <a class="nav-link" href="{% url 'todo' %}">Languages<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{% url 'basics' %}">Stack<span class="sr-only">(current)</span></a>
       </li>
+
 
       <li class="nav-item active">
         <a class="nav-link" href="{% url 'projects' %}">Projects<span class="sr-only">(current)</span></a>
       </li>
 
       <li class="nav-item active">
-        <a class="nav-link" href="{% url 'basics' %}">Stack<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{% url 'todo' %}">Practices<span class="sr-only">(current)</span></a>
       </li>
+
+
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Deliverables<span class="sr-only">(current)</span></a>
+      </li>
+
+
     </ul>
 
 
     <!--Language Stack field-->
     <form class="form-inline my-2 my-lg-0" method="POST">
     	{% csrf_token %}
-      <input class="form-control mr-sm-2" type="search" placeholder="Language to Learn" aria-label="Search" name="item">
+      <input class="form-control mr-sm-2" type="search" placeholder="Add a Practice" aria-label="Search" name="item">
       <button class="btn btn-outline-success my-2 my-sm-0  mr-4" type="submit">Add To List</button>
     </form>
 
