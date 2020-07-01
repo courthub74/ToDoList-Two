@@ -21,23 +21,32 @@
 		{% endif %}
 
 
+		<style type="text/css">
+			.black {
+				background-color: black;
+				color: white;
+			}
+			.td {
+				color: black;
+			}
+		</style>
 
 		{% if all_proj %}
 			<div class="container">
       			<table class="table table-bordered">
-        			<th class="table table-primary" colspan="4">Projects to Complete</th>
+        			<th class="table black" colspan="4">Projects to Complete</th>
 						{% for stuff in all_proj %}
 							{% if stuff.completedproj %}
-								<tr class="table-primary">
-									<td class="striker"><a href="{% url 'projedit' stuff.id %}">{{ stuff.itemproj }}</a></td>
-									<td><center><a href="{% url 'uncross_project' stuff.id %}">Uncross</center></td>
-									<td><center><a href="{% url 'deleteproj' stuff.id %}">Delete</a></center></td>
+								<tr class="black">
+									<td class="striker"><a href="{% url 'projedit' stuff.id %}" style="color: white">{{ stuff.itemproj }}</a></td>
+									<td><center><a href="{% url 'uncross_project' stuff.id %}" style="color: white">Uncross</center></td>
+									<td><center><a href="{% url 'deleteproj' stuff.id %}" style="color: white">Delete</a></center></td>
 								</tr>
 								{% else %}
 								<tr>
-									<td><a href="{% url 'projedit' stuff.id %}">{{ stuff.itemproj }}</a></td>
-									<td><center><a href="{% url 'cross_off_project' stuff.id %}">Cross Off</a></center></td>
-									<td><center><a href="{% url 'deleteproj' stuff.id %}">Delete</a></center></td>
+									<td><a href="{% url 'projedit' stuff.id %}" style="color: black">{{ stuff.itemproj }}</a></td>
+									<td><center><a href="{% url 'cross_off_project' stuff.id %}" style="color: black">Cross Off</a></center></td>
+									<td><center><a href="{% url 'deleteproj' stuff.id %}" style="color: black">Delete</a></center></td>
 								</tr>
 							{% endif %}
 							

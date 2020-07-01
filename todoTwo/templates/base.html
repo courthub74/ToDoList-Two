@@ -41,7 +41,7 @@
       </li>
 
       <li class="nav-item active">
-        <a class="nav-link" href="#">Deliverables<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{% url 'deliverables' %}">Deliverables<span class="sr-only">(current)</span></a>
       </li>
 
       <li class="nav-item active">
@@ -55,14 +55,14 @@
     <!--Language Stack field-->
     <form class="form-inline my-2 my-lg-0" method="POST">
     	{% csrf_token %}
-      <input class="form-control mr-sm-2" type="search" placeholder="Add a Practice" aria-label="Search" name="item">
+      <input class="form-control mr-sm-2" type="search" placeholder="Enter Practice" aria-label="Search" name="item">
       <button class="btn btn-outline-success my-2 my-sm-0  mr-4" type="submit">Add To List</button>
     </form>
 
     <!--Projects field-->
     <form class="form-inline my-2 my-lg-0" method="POST">
     	{% csrf_token %}
-      <input class="form-control mr-sm-2" type="search" placeholder="Projects to Complete" aria-label="Search" name="itemproj">
+      <input class="form-control mr-sm-2" type="search" placeholder="Enter Project" aria-label="Search" name="itemproj">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add To List</button>
     </form>
   </div>

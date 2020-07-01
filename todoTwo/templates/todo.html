@@ -22,6 +22,15 @@
 <br>
 
     {% if all_items %}
+
+    <style type="text/css">
+        .black {
+          color: black;
+        }
+        .td {
+          color: black;
+        }
+    </style>
     
       <table class="table table-bordered">
         <th class="table table-secondary" colspan="4">Practices</th>
@@ -29,15 +38,15 @@
           {% for things in all_items %}
               {% if things.completed %}
                   <tr class="table-secondary">
-                      <td class="striker"><a href="{% url 'editinfo' things.id %}">{{ things.item }}</a></td>
-                      <td><center><a href="{% url 'uncross' things.id %}">Uncross</a></center></td>
-                      <td><center><a href="{% url 'delete' things.id %}">Delete</a></center></td>
+                      <td class="striker black"><a href="{% url 'editinfo' things.id %}" style="color: black">{{ things.item }}</a></td>
+                      <td><center><a href="{% url 'uncross' things.id %}" style="color: black">Uncross</a></center></td>
+                      <td><center><a href="{% url 'delete' things.id %}" style="color: black">Delete</a></center></td>
                   </tr>
               {% else %}
                   <tr>
-                      <td><a href="{% url 'editinfo' things.id %}">{{ things.item }}</a></td>
-                      <td><center><a href="{% url 'cross_off' things.id %}">Cross Off</a></center></td>
-                      <td><center><a href="{% url 'delete' things.id %}">Delete</a></center></td>
+                      <td><a href="{% url 'editinfo' things.id %}" style="color: black">{{ things.item }}</a></td>
+                      <td><center><a href="{% url 'cross_off' things.id %}" style="color: black">Cross Off</a></center></td>
+                      <td><center><a href="{% url 'delete' things.id %}" style="color: black">Delete</a></center></td>
                   </tr>
               {% endif %}
           {% endfor %}
