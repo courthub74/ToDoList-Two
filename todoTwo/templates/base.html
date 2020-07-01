@@ -17,8 +17,6 @@
   </head>
 
 
-
-
   <body>
 
     <!--Navbar-->
@@ -56,14 +54,20 @@
     <form class="form-inline my-2 my-lg-0" method="POST">
     	{% csrf_token %}
       <input class="form-control mr-sm-2" type="search" placeholder="Enter Practice" aria-label="Search" name="item">
-      <button class="btn btn-outline-success my-2 my-sm-0  mr-4" type="submit">Add To List</button>
+      <button class="btn btn-outline-secondary my-2 my-sm-0  mr-4" type="submit">Add To Practice</button>
     </form>
 
     <!--Projects field-->
     <form class="form-inline my-2 my-lg-0" method="POST">
     	{% csrf_token %}
       <input class="form-control mr-sm-2" type="search" placeholder="Enter Project" aria-label="Search" name="itemproj">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add To List</button>
+      <button class="btn btn-outline-secondary my-2 my-sm-0 mr-4" type="submit">Add To Project</button>
+    </form>
+
+    <form class="form-inline my-2 my-lg-0" method="POST">
+      {% csrf_token %}
+      <input class="form-control mr-sm-2" type="search" placeholder="Enter Deliverable" aria-label="Search" name="delivs">
+      <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Add To Deliverable</button>
     </form>
   </div>
 </nav> 

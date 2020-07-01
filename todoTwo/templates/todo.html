@@ -9,7 +9,7 @@
 {% if messages %}
   {% for message in messages %}
 
-      <div class="alert alert-secondary alert-dismissable" role="alert">
+      <div class="alert alert-primary alert-dismissable" role="alert">
         <button class="close" data-dismiss="alert">
              <small><sup>x</sup></small>
         </button>
@@ -33,11 +33,11 @@
     </style>
     
       <table class="table table-bordered">
-        <th class="table table-secondary" colspan="4">Practices</th>
+        <th class="table table-primary" colspan="4">Practices</th>
 
           {% for things in all_items %}
               {% if things.completed %}
-                  <tr class="table-secondary">
+                  <tr class="table-primary">
                       <td class="striker black"><a href="{% url 'editinfo' things.id %}" style="color: black">{{ things.item }}</a></td>
                       <td><center><a href="{% url 'uncross' things.id %}" style="color: black">Uncross</a></center></td>
                       <td><center><a href="{% url 'delete' things.id %}" style="color: black">Delete</a></center></td>

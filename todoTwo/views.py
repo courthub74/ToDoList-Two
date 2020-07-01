@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import List, Project, Deliverables
-from .forms import ListForm, ProjectForm
+from .forms import ListForm, ProjectForm, DeliverablesForm
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 
@@ -142,15 +142,17 @@ def projedit(request, list_id):
 #DELIVERABLES
 
 def deliverables(request):
-	# if request.method == 'POST':
-	# 	dform = Deliverablesform(request.POST or None)
+	if request.method == 'POST':
+		dform = DeliverablesForm(request.POST or None)
 
-	# 	if dform.is_valid():
-	# 		dform.save()
-	# 		all_delivs = Deliverables.objects.all
-	# 		messages.success(request, ('Deliverable Has Been Added'))
-	# 		return render(request, 'deliverables.html', )
-	#my_name = "CourDevs"
-	all_delivs = Deliverables.objects.all 
-	return render(request, 'deliverables.html', {'all_delivs': all_delivs})
+		if dform.is_valid():
+			dform.save()
+			all_delivs = Deliverables.objects.all
+			return render(request, 'deliverables.html', {'all_delivs': all_delivs})
+
+	else:
+		all_delivs = Deliverables.objects.all
+		return render(request, 'deliverables.html', {'all_delivs': all_delivs})
+
+	
 

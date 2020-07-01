@@ -10,7 +10,7 @@
 		{% if messages %}
 			  {% for message in messages %}
 
-			      <div class="alert alert-primary alert-dismissable" role="alert">
+			      <div class="alert black alert-dismissable" role="alert">
 			        <button class="close" data-dismiss="alert">
 			             <small><sup>x</sup></small>
 			        </button>
@@ -34,7 +34,7 @@
 		{% if all_proj %}
 			<div class="container">
       			<table class="table table-bordered">
-        			<th class="table black" colspan="4">Projects to Complete</th>
+        			<th class="table black" colspan="4">Projects</th>
 						{% for stuff in all_proj %}
 							{% if stuff.completedproj %}
 								<tr class="black">
