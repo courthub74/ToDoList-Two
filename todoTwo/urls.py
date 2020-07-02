@@ -20,6 +20,6 @@ urlpatterns = [
 	path('deletedeliverable/<list_id>', views.deletedeliverable, name='deletedeliverable'),
 	path('cross_off_deliv/<list_id>', views.cross_off_deliv, name='cross_off_deliv'),
 	path('uncross_deliv/<list_id>', views.uncross_deliv, name='uncross_deliv'),
-	path('edit_deliv/<list_id>', views.edit_deliv, name='edit_deliv'),
+	path('editdeliv/<list_id>', views.editdeliv, name='editdeliv'),
 
 ]

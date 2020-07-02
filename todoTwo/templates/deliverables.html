@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}To-Do-List Two{% endblock %}
+{% block title %}Courdevs Oracle | Deliverables{% endblock %}
 
 {% block content %}
 
@@ -36,13 +36,13 @@
 			{% for things in all_delivs %}
 				{% if things.completeddelivs %}
 					<tr class="table-success">
-						<td class="striker3"><a href="{% url 'edit_deliv' things.id %}" style="color: black">{{ things.delivs }}</td> 
+						<td class="striker3"><a href="{% url 'editdeliv' things.id %}" style="color: black">{{ things.delivs }}</td> 
 						<td><center><a href="{% url 'uncross_deliv' things.id %}" style="color: black">Uncross</center></td>
 						<td><center><a href="{% url 'deletedeliverable' things.id %}" style="color: black">Delete</a></center></td>
 					</tr>
 				{% else %}
 					<tr>
-						<td><a href="{% url 'edit_deliv' things.id %}" style="color: black">{{ things.delivs }}</td> 
+						<td><a href="{% url 'editdeliv' things.id %}" style="color: black">{{ things.delivs }}</td> 
 						<td><center><a href="{% url 'cross_off_deliv' things.id %}" style="color: black">Cross Off</center></td>
 						<td><center><a href="{% url 'deletedeliverable' things.id %}" style="color: black">Delete</a></center></td>
 					</tr>

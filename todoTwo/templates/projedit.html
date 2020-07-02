@@ -14,7 +14,7 @@
 			<h3>EDIT HERE:</h3>
 			<form class="form-inline my-2 my-lg-0" method="POST">
 		    	{% csrf_token %}
-		      <input class="form-control mr-sm-2" type="search" placeholder="{{ pitem.itemproj }}" value="{{ pitem.itemproj }}" aria-label="Search" name="itemproj">
+		      <input class="form-control mr-sm-2" type="search" size="80" placeholder="{{ pitem.itemproj }}" value="{{ pitem.itemproj }}" aria-label="Search" name="itemproj">
 
 		      <input type="hidden" value="{{ itemproj.completedproj }}" name="completedproj">
 		      

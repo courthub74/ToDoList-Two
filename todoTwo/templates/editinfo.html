@@ -13,7 +13,7 @@
 		<h3>EDIT HERE:</h3>
 		<form class="form-inline my-2 my-lg-0" method="POST">
 	    	{% csrf_token %}
-	      <input class="form-control mr-sm-2" type="search" placeholder="{{ item.item }}" value="{{ item.item }}" aria-label="Search" name="item">
+	      <input class="form-control mr-sm-2" type="search" size="80" placeholder="{{ item.item }}" value="{{ item.item }}" aria-label="Search" name="item">
 	      <input type="hidden" value="{{ item.completed }}" name="completed">
 	      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Edit Item</button>
 	    </form>

@@ -240,22 +240,23 @@ def uncross_deliv(request, list_id):
 	return redirect('deliverables')
 
 #EDIT DELIVERABLE
-def edit_deliv(request, list_id):
+def editdeliv(request, list_id):
 	if request.method == 'POST':
 
-		editdeliv = Deliverables.objects.get(pk=list_id)
+		ditem = Deliverables.objects.get(pk=list_id)
 
-		editform = DeliverablesForm(request.POST or None, instance=item)
+		dform = DeliverablesForm(request.POST or None, instance=ditem)
 
-		if editform.is_valid():
-			editform.save()
+		if dform.is_valid():
+			dform.save()
+			all_delivs = Deliverables.objects.all
 			messages.success(request, ("Deliverable Has Been Edited"))
-			return redirect('deliverables')
+			return render(request, 'editdeliv.html', {'all_delivs': all_delivs})
 		
 		
 	else:
-		editdeliv = Deliverables.objects.get(pk=list_id)
-		return render(request, 'deliverables.html', {'editdeliv': editdeliv})
+		ditem = Deliverables.objects.get(pk=list_id)
+		return render(request, 'editdeliv.html', {'ditem': ditem})
 
 
 
