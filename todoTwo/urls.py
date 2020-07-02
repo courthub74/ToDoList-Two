@@ -17,6 +17,7 @@ urlpatterns = [
 	path('projedit/<list_id>', views.projedit, name='projedit'),
 
 	path('deliverables/', views.deliverables, name='deliverables'),
+	path('deletedeliverable/<list_id>', views.deletedeliverable, name='deletedeliverable'),
 	#path('editdelivs/<list_id>', views.editdelivs, name='editdelivs'),
 
 ]

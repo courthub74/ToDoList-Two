@@ -18,7 +18,7 @@ def todo(request):
 		if form.is_valid(): #if information on form is valid
 			form.save()     #save the info
 			all_items = List.objects.all
-			messages.success(request, ('Item Has Been Added To List'))
+			messages.success(request, ("Practice Has Been Added To 'Practices' List"))
 			return render(request, 'todo.html', {'all_items': all_items})
 			
 	if request.method == 'POST':
@@ -27,7 +27,7 @@ def todo(request):
 		if pform.is_valid(): #if information on form is valid
 			pform.save()     #save the info
 			all_proj = Project.objects.all
-			messages.success(request, ('Project Has Been Added To List'))
+			messages.success(request, ("Project Has Been Added To 'Projects' List"))
 			return render(request, 'projects.html', {'all_proj': all_proj})
 
 
@@ -40,7 +40,7 @@ def todo(request):
 def delete(request, list_id):
 	item = List.objects.get(pk=list_id)
 	item.delete()
-	messages.success(request, ('Item Has Been Deleted!'))
+	messages.success(request, ('Practice Has Been Deleted!'))
 	return redirect ('todo')
 
 #CROSS OFF
@@ -66,7 +66,7 @@ def editinfo(request, list_id):
 
 		if form.is_valid(): #if information on form is valid
 			form.save()     #save the info
-			messages.success(request, ('Language Has Been Edited'))
+			messages.success(request, ('Practice Has Been Edited'))
 			return redirect('todo')
 
 	else:
@@ -86,7 +86,7 @@ def projects(request):
 		if pform.is_valid(): #if information on form is valid
 			pform.save()     #save the info
 			all_proj = Project.objects.all
-			messages.success(request, ('Project Has Been Added To List'))
+			messages.success(request, ("Project Has Been Added To 'Projects' List"))
 			return render(request, 'projects.html', {'all_proj': all_proj})
 
 	if request.method == 'POST':
@@ -94,7 +94,7 @@ def projects(request):
 		if form.is_valid(): #if information on form is valid
 			form.save()     #save the info
 			all_items = List.objects.all
-			messages.success(request, ('Item Has Been Added To List'))
+			messages.success(request, ("Practice Has Been Added To 'Practices' List"))
 			return render(request, 'todo.html', {'all_items': all_items})
 	else:
 		all_proj = Project.objects.all
@@ -148,11 +148,20 @@ def deliverables(request):
 		if dform.is_valid():
 			dform.save()
 			all_delivs = Deliverables.objects.all
+			messages.success(request, ('Deliverable Has Been Added To "Deliverables" List'))
 			return render(request, 'deliverables.html', {'all_delivs': all_delivs})
 
 	else:
 		all_delivs = Deliverables.objects.all
 		return render(request, 'deliverables.html', {'all_delivs': all_delivs})
+
+
+def deletedeliverable(request, list_id):
+	dedeliv = Deliverables.objects.get(pk=list_id)
+	dedeliv.delete()
+	messages.success(request, ("Deliverable Has Been Deleted"))
+	return redirect('deliverables')
+
 
 	
 

@@ -38,13 +38,13 @@
 					<tr class="black">
 						<td class="striker3">{{ things.delivs }}</td> 
 						<td><center>{{ things.completeddelivs }}</center></td>
-						<td><center>Delete</center></td>
+						<td><center><a href="{% url 'deletedeliverable' things.id %}">Delete</a></center></td>
 					</tr>
 				{% else %}
 					<tr>
 						<td>{{ things.delivs }}</td> 
 						<td><center>{{ things.completeddelivs }}</center></td>
-						<td><center>Delete</center></td>
+						<td><center><a href="{% url 'deletedeliverable' things.id %}">Delete</a></center></td>
 					</tr>
 				{% endif %}
 			{% endfor %}
