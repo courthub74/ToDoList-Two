@@ -8,6 +8,33 @@ from django.http import HttpResponseRedirect
 
 #BASICS
 def basics(request):
+	if request.method == 'POST':
+		pform = ProjectForm(request.POST or None) #create variable called form call it ListForm and populate it with the request POST or if nothing requested, do nothing
+
+		if pform.is_valid(): #if information on form is valid
+			pform.save()     #save the info
+			all_proj = Project.objects.all
+			messages.success(request, ("Project Has Been Added To 'Projects' List"))
+			return render(request, 'projects.html', {'all_proj': all_proj})
+
+
+	if request.method == 'POST':
+		form = ListForm(request.POST or None)
+		if form.is_valid(): #if information on form is valid
+			form.save()     #save the info
+			all_items = List.objects.all
+			messages.success(request, ("Practice Has Been Added To 'Practices' List"))
+			return render(request, 'todo.html', {'all_items': all_items})
+
+	if request.method == 'POST':
+		dform = DeliverablesForm(request.POST or None)
+
+		if dform.is_valid():
+			dform.save()
+			all_delivs = Deliverables.objects.all
+			messages.success(request, ('Deliverable Has Been Added To "Deliverables" List'))
+			return render(request, 'deliverables.html', {'all_delivs': all_delivs})
+
 	return render(request, 'basics.html', {})
 
 #TODOLIST
@@ -29,6 +56,15 @@ def todo(request):
 			all_proj = Project.objects.all
 			messages.success(request, ("Project Has Been Added To 'Projects' List"))
 			return render(request, 'projects.html', {'all_proj': all_proj})
+
+	if request.method == 'POST':
+		dform = DeliverablesForm(request.POST or None)
+
+		if dform.is_valid():
+			dform.save()
+			all_delivs = Deliverables.objects.all
+			messages.success(request, ('Deliverable Has Been Added To "Deliverables" List'))
+			return render(request, 'deliverables.html', {'all_delivs': all_delivs})
 
 
 	else:
@@ -96,6 +132,16 @@ def projects(request):
 			all_items = List.objects.all
 			messages.success(request, ("Practice Has Been Added To 'Practices' List"))
 			return render(request, 'todo.html', {'all_items': all_items})
+
+	if request.method == 'POST':
+		dform = DeliverablesForm(request.POST or None)
+
+		if dform.is_valid():
+			dform.save()
+			all_delivs = Deliverables.objects.all
+			messages.success(request, ('Deliverable Has Been Added To "Deliverables" List'))
+			return render(request, 'deliverables.html', {'all_delivs': all_delivs})
+
 	else:
 		all_proj = Project.objects.all
 		return render(request, 'projects.html', {'all_proj': all_proj})
@@ -150,6 +196,24 @@ def deliverables(request):
 			messages.success(request, ('Deliverable Has Been Added To "Deliverables" List'))
 			return render(request, 'deliverables.html', {'all_delivs': all_delivs})
 
+	if request.method == 'POST':
+		pform = ProjectForm(request.POST or None) #create variable called form call it ProjectForm and populate it with the request POST or if nothing requested, do nothing
+
+		if pform.is_valid(): #if information on form is valid
+			pform.save()     #save the info
+			all_proj = Project.objects.all
+			messages.success(request, ("Project Has Been Added To 'Projects' List"))
+			return render(request, 'projects.html', {'all_proj': all_proj})
+
+
+	if request.method == 'POST':
+		form = ListForm(request.POST or None)
+		if form.is_valid(): #if information on form is valid
+			form.save()     #save the info
+			all_items = List.objects.all
+			messages.success(request, ("Practice Has Been Added To 'Practices' List"))
+			return render(request, 'todo.html', {'all_items': all_items})
+
 	else:
 		all_delivs = Deliverables.objects.all
 		return render(request, 'deliverables.html', {'all_delivs': all_delivs})
@@ -174,6 +238,25 @@ def uncross_deliv(request, list_id):
 	uncrossdeliv.completeddelivs = False
 	uncrossdeliv.save()
 	return redirect('deliverables')
+
+#EDIT DELIVERABLE
+def edit_deliv(request, list_id):
+	if request.method == 'POST':
+
+		editdeliv = Deliverables.objects.get(pk=list_id)
+
+		editform = DeliverablesForm(request.POST or None, instance=item)
+
+		if editform.is_valid():
+			editform.save()
+			messages.success(request, ("Deliverable Has Been Edited"))
+			return redirect('deliverables')
+		
+		
+	else:
+		editdeliv = Deliverables.objects.get(pk=list_id)
+		return render(request, 'deliverables.html', {'editdeliv': editdeliv})
+
 
 
 
