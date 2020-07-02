@@ -140,7 +140,6 @@ def projedit(request, list_id):
 ##################################################################
 
 #DELIVERABLES
-
 def deliverables(request):
 	if request.method == 'POST':
 		dform = DeliverablesForm(request.POST or None)
@@ -155,12 +154,30 @@ def deliverables(request):
 		all_delivs = Deliverables.objects.all
 		return render(request, 'deliverables.html', {'all_delivs': all_delivs})
 
-
+#DELETE DELIVERABLE
 def deletedeliverable(request, list_id):
 	dedeliv = Deliverables.objects.get(pk=list_id)
 	dedeliv.delete()
 	messages.success(request, ("Deliverable Has Been Deleted"))
 	return redirect('deliverables')
+
+#CROSS OFF DELIVERABLE
+def cross_off_deliv(request, list_id):
+	crossdeliv = Deliverables.objects.get(pk=list_id)
+	crossdeliv.completeddelivs = True
+	crossdeliv.save()
+	return redirect('deliverables')
+
+#UNCROSS DELIVERABLE
+def uncross_deliv(request, list_id):
+	uncrossdeliv = Deliverables.objects.get(pk=list_id)
+	uncrossdeliv.completeddelivs = False
+	uncrossdeliv.save()
+	return redirect('deliverables')
+
+
+
+
 
 
 	

@@ -35,16 +35,16 @@
 		
 			{% for things in all_delivs %}
 				{% if things.completeddelivs %}
-					<tr class="black">
+					<tr class="table-success">
 						<td class="striker3">{{ things.delivs }}</td> 
-						<td><center>{{ things.completeddelivs }}</center></td>
-						<td><center><a href="{% url 'deletedeliverable' things.id %}">Delete</a></center></td>
+						<td><center><a href="{% url 'uncross_deliv' things.id %}" style="color: black">Uncross</center></td>
+						<td><center><a href="{% url 'deletedeliverable' things.id %}" style="color: black">Delete</a></center></td>
 					</tr>
 				{% else %}
 					<tr>
 						<td>{{ things.delivs }}</td> 
-						<td><center>{{ things.completeddelivs }}</center></td>
-						<td><center><a href="{% url 'deletedeliverable' things.id %}">Delete</a></center></td>
+						<td><center><a href="{% url 'cross_off_deliv' things.id %}" style="color: black">Cross Off</center></td>
+						<td><center><a href="{% url 'deletedeliverable' things.id %}" style="color: black">Delete</a></center></td>
 					</tr>
 				{% endif %}
 			{% endfor %}

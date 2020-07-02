@@ -18,6 +18,8 @@ urlpatterns = [
 
 	path('deliverables/', views.deliverables, name='deliverables'),
 	path('deletedeliverable/<list_id>', views.deletedeliverable, name='deletedeliverable'),
+	path('cross_off_deliv/<list_id>', views.cross_off_deliv, name='cross_off_deliv'),
+	path('uncross_deliv/<list_id>', views.uncross_deliv, name='uncross_deliv'),
 	#path('editdelivs/<list_id>', views.editdelivs, name='editdelivs'),
 
 ]
