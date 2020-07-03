@@ -7,11 +7,6 @@
 	
 	{% if ditem %}
 	
-		<style type="text/css">
-			.editinput {
-				width: 500px; 
-			}
-		</style>
 
 		<br><br>
 		
@@ -19,7 +14,7 @@
 			<h3>EDIT HERE:</h3>
 			<form class="form-inline my-2 my-lg-0" method="POST">
 		    	{% csrf_token %}
-		      <input class="form-control mr-sm-2 editinput" type="search" size="80" placeholder="{{ ditem.delivs }}" value="{{ ditem.delivs }}" aria-label="Search" name="delivs">
+		      <input class="form-control mr-sm-2" type="search" size="80" placeholder="{{ ditem.delivs }}" value="{{ ditem.delivs }}" aria-label="Search" name="delivs">
 
 		      <input type="hidden" value="{{ ditem.delivs }}" name="completedproj">
 		      
